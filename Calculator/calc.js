@@ -2,7 +2,7 @@
 var display = '';
 var stack = [];
 var currentNum = '';
-var ops = ['+', '-', '*', '-'];
+var ops = ['+', '-', '*', '÷'];
 
 function clear(){
 
@@ -26,11 +26,12 @@ $(function() {
     //functionality for when an operator is clicked
     $(".operator").click(function(){
 
-   		console.log(stack);
 
    		if(currentNum){
-   			stack.push(currentNum);
+   			stack.push(Number(currentNum));
    		}
+
+   		console.log(stack);
 
     	//if the stack has another operator on top, override it with most recent entry 
     	if(stack[stack.length-1] && jQuery.inArray(stack[stack.length-1], ops) > -1){
@@ -46,6 +47,31 @@ $(function() {
 
     //functionality for when the equals button is clicked
   	$("#equalsButton").click(function (){
+
+  		if(stack.length < 2)
+  			return;
+
+  		var num1 = Number(stack[stack.length-2]);
+  		var op = stack[stack.length-1];
+  		var num2 = Number(currentNum);
+
+  	//handle the case of trying to divide by zero
+  		if(op == '÷' && num2 == 0){
+  			clear();
+  			$("#display").val('∞');
+  			currentNum = '';
+  			return;
+  		}
+
+  		if(op == '÷')
+  			op = '/';
+
+
+  		clear();
+
+  		currentNum = eval(num1 + op + num2);
+
+  		$("#display").val(currentNum);
 
   	})
 
