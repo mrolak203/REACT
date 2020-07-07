@@ -35,7 +35,6 @@ function mostPopularDays(week) {
 
     // first pass through array to find the highest amount traffic 
     for(var i = 0; i<week.length; i++){
-        console.log(week[i].traffic);
         if(week[i].traffic > max)
             max = week[i].traffic;
     }
@@ -66,7 +65,18 @@ function mostPopularDays(week) {
  *         empty array if the array's lengths are unequal or zero, or if any array is null.
  */
 function createAnimalObjects(names, types, breeds) {
-    // IMPLEMENT THIS FUNCTION!
+    
+    var result = [];
+
+    if((names.length == types.length && types.length == breeds.length) && names && types && breeds){
+
+        for(var i=0; i<names.length; i++){
+            result.push(new Animal(names[i], types[i], breeds[i]));
+        }
+    }
+
+    return result;
+
 }
 
 /**
