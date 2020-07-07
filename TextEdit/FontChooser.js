@@ -2,7 +2,10 @@ class FontChooser extends React.Component {
 
     constructor(props) {
 	super(props);
-	this.state = { isHidden: true, bold: !this.props.bold};
+	this.state = { isHidden: true, bold: !this.props.bold, 
+							
+									size: this.props.size
+	};
     }
     
     //when the text is clicked, change the visibility of all components to their inverse 
@@ -24,9 +27,22 @@ class FontChooser extends React.Component {
 
     }
 
+    //when the plus button is clicked, the font size increases
+    clickPlus(){
+
+    	if(this.state.size < this.props.max){
+    		console.log("in");
+    		console.log(Number(this.state.size) + 1);
+    		this.setState({size: Number(this.state.size) + 1});
+
+    	}
+
+    }
     render() {
 
     		var weight = this.state.bold ? 'bold' : 'normal';
+    		var size = this.state.size;
+
 
 	return(
 
@@ -35,8 +51,9 @@ class FontChooser extends React.Component {
 	        onClick={this.clickCheckBox.bind(this)}/>
 	       <button id="decreaseButton" className = "tool" hidden={true}>-</button>
 	       <span id="fontSizeSpan" className = "tool" hidden={true}>{this.props.size}</span>
-	       <button id="increaseButton" className = "tool" hidden={true}>+</button>
-	       <span id="textSpan" style = {{ fontWeight: weight }}
+	       <button id="increaseButton" className = "tool" hidden={true} 
+	       onClick={this.clickPlus.bind(this)}>+</button>
+	       <span id="textSpan" style = {{ fontWeight: weight, fontSize: this.state.size }}
 					onClick={this.clickText.bind(this)}>{this.props.text} </span>
 	       </div>
 	);
