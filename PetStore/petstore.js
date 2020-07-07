@@ -1,7 +1,8 @@
 
 /**
- * This function should calculate the total amount of pet food that should be
+ * This function calculates the total amount of pet food that should be
  * ordered for the upcoming week.
+
  * @param numAnimals the number of animals in the store
  * @param avgFood the average amount of food (in kilograms) eaten by the animals
  * 				each week
@@ -9,8 +10,6 @@
  * 				 week, or -1 if the numAnimals or avgFood are less than 0 or non-numeric
  */
 function calculateFoodOrder(numAnimals, avgFood) {
-
-    console.log(isNaN(numAnimals));
 
     if(numAnimals < 0 || avgFood < 0 || isNaN(numAnimals) || isNaN(avgFood)){
         return -1 ;
@@ -31,7 +30,27 @@ function calculateFoodOrder(numAnimals, avgFood) {
  * @return a string containing the name of the most popular day of the week if there is only one most popular day, and an array of the strings containing the names of the most popular days if there are more than one that are most popular
  */
 function mostPopularDays(week) {
-    // IMPLEMENT THIS FUNCTION!
+
+    var max = 0;
+
+    // first pass through array to find the highest amount traffic 
+    for(var i = 0; i<week.length; i++){
+        console.log(week[i].traffic);
+        if(week[i].traffic > max)
+            max = week[i].traffic;
+    }
+
+    // second pass to add all elements of that size to the result array
+    var results = [];
+
+     for(var i = 0; i<week.length; i++){
+        if(week[i].traffic == max)
+            results.push(week[i].name);
+
+     }
+
+
+    return results;
 }
 
 
@@ -49,13 +68,6 @@ function mostPopularDays(week) {
 function createAnimalObjects(names, types, breeds) {
     // IMPLEMENT THIS FUNCTION!
 }
-
-/////////////////////////////////////////////////////////////////
-//
-//  Do not change any code below here!
-//
-/////////////////////////////////////////////////////////////////
-
 
 /**
  * A prototype to create Weekday objects
