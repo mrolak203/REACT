@@ -52,11 +52,10 @@ function mostPopularDays(week) {
     return results;
 }
 
-
 /**
  * Given three arrays of equal length containing information about a list of
  * animals - where names[i], types[i], and breeds[i] all relate to a single
- * animal - return an array of Animal objects constructed from the provided
+ * animal - this function returns an array of Animal objects constructed from the provided
  * info.
  * @param names the array of animal names
  * @param types the array of animal types (ex. "Dog", "Cat", "Bird")
