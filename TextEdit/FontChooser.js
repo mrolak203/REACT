@@ -38,7 +38,6 @@ class FontChooser extends React.Component {
 
     }
 
-
     //when the minus button is clicked, the font size decreases
     clickMinus(){
 
@@ -63,7 +62,7 @@ class FontChooser extends React.Component {
 	       <button id="decreaseButton" className = "tool" hidden={true}
 	       onClick={this.clickMinus.bind(this)}
 	       >-</button>
-	       <span id="fontSizeSpan" className = "tool" hidden={true}>{this.props.size}</span>
+	       <span id="fontSizeSpan" className = "tool" hidden={true}>{this.state.size}</span>
 	       <button id="increaseButton" className = "tool" hidden={true} 
 	       onClick={this.clickPlus.bind(this)}>+</button>
 	       <span id="textSpan" style = {{ fontWeight: weight, fontSize: this.state.size }}
