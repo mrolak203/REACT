@@ -1,2 +1,3 @@
 # REACT
-Projects I made while learning HTML, CSS, JS, JQuery, REACT, and Node.js
+Projects I made while 
+practicing & learning HTML, CSS, JS, JQuery, REACT, and Node.js
