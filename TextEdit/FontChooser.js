@@ -30,18 +30,29 @@ class FontChooser extends React.Component {
     //when the plus button is clicked, the font size increases
     clickPlus(){
 
-    	if(this.state.size < this.props.max){
-    		console.log("in");
-    		console.log(Number(this.state.size) + 1);
+    	if(this.state.size <= this.props.max){
+
     		this.setState({size: Number(this.state.size) + 1});
 
     	}
 
     }
+
+
+    //when the minus button is clicked, the font size decreases
+    clickMinus(){
+
+    	if(this.state.size >= this.props.min){
+
+    		this.setState({size: Number(this.state.size) - 1});
+    	}
+
+    }
+
+
     render() {
 
     		var weight = this.state.bold ? 'bold' : 'normal';
-    		var size = this.state.size;
 
 
 	return(
@@ -49,7 +60,9 @@ class FontChooser extends React.Component {
 	       <div>
 	       <input type="checkbox" className = "tool"  id="boldCheckbox" hidden={true}
 	        onClick={this.clickCheckBox.bind(this)}/>
-	       <button id="decreaseButton" className = "tool" hidden={true}>-</button>
+	       <button id="decreaseButton" className = "tool" hidden={true}
+	       onClick={this.clickMinus.bind(this)}
+	       >-</button>
 	       <span id="fontSizeSpan" className = "tool" hidden={true}>{this.props.size}</span>
 	       <button id="increaseButton" className = "tool" hidden={true} 
 	       onClick={this.clickPlus.bind(this)}>+</button>
