@@ -15,8 +15,7 @@ constructor(props){
         function() {
           this.props.addList(this.state);
         });
-
-      // Implement the rest of this function here!
+      
   }
 
   render() {

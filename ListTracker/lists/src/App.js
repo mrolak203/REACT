@@ -33,7 +33,7 @@ class App extends Component {
       lists: this.state.lists.concat(s.list),
       items: newItems
     })
-      // Implement this function!
+      
   }
 
   /**
@@ -45,7 +45,16 @@ class App extends Component {
    * the state, this function  should then re-render this App component.
    */
   handleAddItem(s) {
-      // Implement this function!
+      
+      let newItems = this.state.items;
+
+      newItems[s.name].push(s.newItem);
+
+      this.setState({
+      items: newItems
+    });
+
+
   }
 
   /**
