@@ -7,6 +7,7 @@ class App extends Component {
 
   constructor() {
     super();
+    
     this.state = {
 	lists: [], // this holds the name of each list
 	items: {} // this property names of this object are the names of the lists; their values are arrays of the items in each list
@@ -20,6 +21,18 @@ class App extends Component {
    * as the value put into the "lists" array. It should then re-render this App component.
    */
   handleAddList(s) {
+
+    //a list of the updated items in state 
+    let newItems = this.state.items;
+
+    //setting the entry for the list to be blank
+    newItems[s.list] = [];
+
+
+    this.setState({
+      lists: this.state.lists.concat(s.list),
+      items: newItems
+    })
       // Implement this function!
   }
 
